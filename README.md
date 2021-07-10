@@ -1,4 +1,4 @@
-# coreutils in V
+# voreutils (coreutils in v)
 
 This repository contains programs equivalent to GNU
 [coreutils](https://www.gnu.org/software/coreutils/), written in the
@@ -48,7 +48,7 @@ Contributions written in other langauges will likely be rejected.
 |         | chroot    | Run a command with a different root directory    |
 |         | cksum     | Print CRC checksum and byte counts               |
 |         | comm      | Compare two sorted files line by line            |
-|         | coreutils | Multi-call program                               |
+|         | voreutils | Multi-call program                               |
 |         | cp        | Copy files and directories                       |
 |         | csplit    | Split a file into context-determined pieces      |
 |         | cut       | Print selected parts of lines                    |
