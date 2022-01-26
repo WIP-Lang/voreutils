@@ -1,5 +1,4 @@
 import os
-import flag
 import common
 import encoding.base64
 
@@ -17,6 +16,8 @@ const (
 
 	// more than 3/4 of chunk_size_decode
 	buffer_size_decode = 16 * 1024
+
+	newline            = []byte{len: 1, init: `\n`}
 )
 
 fn get_file(args []string) os.File {
@@ -81,9 +82,10 @@ fn encode_and_print(mut file os.File, wrap int) {
 					eprintln(err)
 					exit(1)
 				}
-				// flushing is needed here, as otherwise all writes are cached.
-				std_out.flush()
-				print('\n')
+				std_out.write(newline) or {
+					eprintln(err)
+					exit(1)
+				}
 				printed_bytes += wrap - last_column
 				// reset last_column as we have filled up the row.
 				last_column = 0
@@ -93,6 +95,8 @@ fn encode_and_print(mut file os.File, wrap int) {
 				eprintln(err)
 				exit(1)
 			}
+			// flush here, as otherwise the very final newline is printed
+			// before the data that's actually left.
 			std_out.flush()
 			// remember column for the next chunk.
 			last_column = encoded_bytes - printed_bytes
@@ -152,11 +156,8 @@ fn decode_and_print(mut file os.File) {
 }
 
 fn main() {
-	mut fp := flag.new_flag_parser(os.args)
+	mut fp := common.flag_parser(os.args)
 	fp.application(application_name)
-	fp.version(common.coreutils_version())
-	fp.footer(common.coreutils_footer())
-	fp.skip_executable()
 	fp.usage_example('[OPTION]... [FILE]')
 	fp.description('Base64 encode or decode FILE, or standard input, to standard output.')
 	fp.description('If no FILE is specified on the command line or FILE is -, read them from standard input.')

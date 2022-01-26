@@ -1,5 +1,5 @@
 import os
 
 fn main() {
-	run_mv(os.args)
+	run_rmdir(os.args)
 }

@@ -18,6 +18,11 @@ Each command has it's own separate subdirectory under `src`, in case the
 implementor wishes to create multiple `.v` files to implement a command, or add
 a README.md specifically for that command.
 
+## Developing
+
+Please use the `common` module for command line/help handling. This will make
+the command input/output consistent across the tools.
+
 ## Building
 
 Running `make` or `v run build.vsh` will build all the programs in `bin/`.
@@ -27,18 +32,18 @@ Running `make` or `v run build.vsh` will build all the programs in `bin/`.
 Contributions are welcome!
 
 Please only contribute versions of the original utilities written in V.
-Contributions written in other langauges will likely be rejected.
+Contributions written in other languages will likely be rejected.
 
-## Completed (16/109)
+## Completed (38/109)
 
-| Done    | Cmd       | Descripton                                       |
-| :-----: |-----------|--------------------------------------------------|
-|         | **[**     | Alternate form of `test`                         |
+|  Done   | Cmd       | Descripton                                       |
+| :-----: | --------- | ------------------------------------------------ |
+| &check; | **[**     | Alternate form of `test`                         |
 | &check; | arch      | Print machine hardware name                      |
 |         | b2sum     | Print or check BLAKE2 digests                    |
-|         | base32    | Transform data into printable data               |
+| &check; | base32    | Transform data into printable data               |
 | &check; | base64    | Transform data into printable data               |
-|         | basename  | Strip directory and suffix from a file name      |
+| &check; | basename  | Strip directory and suffix from a file name      |
 |         | basenc    | Transform data into printable data               |
 | &check; | cat       | Concatenate and write files                      |
 |         | chcon     | Change SELinux context of file                   |
@@ -49,7 +54,7 @@ Contributions written in other langauges will likely be rejected.
 |         | cksum     | Print CRC checksum and byte counts               |
 |         | comm      | Compare two sorted files line by line            |
 |         | voreutils | Multi-call program                               |
-|         | cp        | Copy files and directories                       |
+| &check; | cp        | Copy files and directories                       |
 |         | csplit    | Split a file into context-determined pieces      |
 |         | cut       | Print selected parts of lines                    |
 |         | date      | Print or set system date and time                |
@@ -62,15 +67,15 @@ Contributions written in other langauges will likely be rejected.
 | &check; | echo      | Print a line of text                             |
 |         | env       | Run a command in a modified environment          |
 |         | expand    | Convert tabs to spaces                           |
-|         | expr      | Evaluate expressions                             |
+| &check; | expr      | Evaluate expressions                             |
 | &check; | factor    | Print prime factors                              |
 | &check; | false     | Do nothing, unsuccessfully                       |
 |         | fmt       | Reformat paragraph text                          |
 |         | fold      | Wrap input lines to fit in specified width       |
 |         | groups    | Print group names a user is in                   |
 |         | head      | Output the first part of files                   |
-|         | hostid    | Print numeric host identifier                    |
-|         | hostname  | Print or set system name                         |
+| &check; | hostid    | Print numeric host identifier                    |
+| &check; | hostname  | Print or set system name                         |
 |         | id        | Print user identity                              |
 |         | install   | Copy files and set attributes                    |
 |         | join      | Join lines on a common field                     |
@@ -79,16 +84,16 @@ Contributions written in other langauges will likely be rejected.
 |         | ln        | Make links between files                         |
 | &check; | logname   | Print current login name                         |
 |         | ls        | List directory contents                          |
-|         | md5sum    | Print or check MD5 digests                       |
+| &check; | md5sum    | Print or check MD5 digests                       |
 |         | mkdir     | Make directories                                 |
 |         | mkfifo    | Make FIFOs (named pipes)                         |
 |         | mknod     | Make block or character special files            |
 |         | mktemp    | Create temporary file or directory               |
-|         | mv        | Move (rename) files                              |
+| &check; | mv        | Move (rename) files                              |
 |         | nice      | Run a command with modified niceness             |
-|         | nl        | Number lines and write files                     |
+| &check; | nl        | Number lines and write files                     |
 |         | nohup     | Run a command immune to hangups                  |
-|         | nproc     | Print the number of available processors         |
+| &check; | nproc     | Print the number of available processors         |
 |         | numfmt    | Reformat numbers                                 |
 |         | od        | Write files in octal or other formats            |
 |         | paste     | Merge lines of files                             |
@@ -98,20 +103,20 @@ Contributions written in other langauges will likely be rejected.
 | &check; | printenv  | Print all or some environment variables          |
 | &check; | printf    | Format and print data                            |
 |         | ptx       | Produce permuted indexes                         |
-|         | pwd       | Print working directory                          |
+| &check; | pwd       | Print working directory                          |
 |         | readlink  | Print value of a symlink or canonical file name  |
 |         | realpath  | Print the resolved file name                     |
 | &check; | rm        | Remove files or directories                      |
-|         | rmdir     | Remove empty directories                         |
+| &check; | rmdir     | Remove empty directories                         |
 |         | runcon    | Run a command in specified SELinux context       |
 | &check; | seq       | Print numeric sequences                          |
-|         | sha1sum   | Print or check SHA-1 digests                     |
-|         | sha224sum | Print or check SHA-2 224 bit digests             |
-|         | sha256sum | Print or check SHA-2 256 bit digests             |
-|         | sha384sum | Print or check SHA-2 384 bit digests             |
-|         | sha512sum | Print or check SHA-2 512 bit digests             |
+| &check; | sha1sum   | Print or check SHA-1 digests                     |
+| &check; | sha224sum | Print or check SHA-2 224 bit digests             |
+| &check; | sha256sum | Print or check SHA-2 256 bit digests             |
+| &check; | sha384sum | Print or check SHA-2 384 bit digests             |
+| &check; | sha512sum | Print or check SHA-2 512 bit digests             |
 |         | shred     | Remove files more securely                       |
-|         | shuf      | Shuffling text                                   |
+| &check; | shuf      | Shuffling text                                   |
 | &check; | sleep     | Delay for a specified time                       |
 |         | sort      | Sort text files                                  |
 |         | split     | Split a file into pieces                         |
@@ -123,7 +128,7 @@ Contributions written in other langauges will likely be rejected.
 |         | tac       | Concatenate and write files in reverse           |
 |         | tail      | Output the last part of files                    |
 |         | tee       | Redirect output to multiple files or processes   |
-|         | test      | Check file types and compare values              |
+| &check; | test      | Check file types and compare values              |
 |         | timeout   | Run a command with a time limit                  |
 |         | touch     | Change file timestamps                           |
 |         | tr        | Translate, squeeze, and/or delete characters     |
@@ -135,11 +140,10 @@ Contributions written in other langauges will likely be rejected.
 |         | unexpand  | Convert spaces to tabs                           |
 |         | uniq      | Uniquify files                                   |
 |         | unlink    | Remove files via the unlink syscall              |
-|         | uptime    | Print system uptime and load                     |
+| &check; | uptime    | Print system uptime and load                     |
 |         | users     | Print login names of users currently logged in   |
 |         | vdir      | Verbosely list directory contents                |
-|         | wc        | Print newline, word, and byte counts             |
+| &check; | wc        | Print newline, word, and byte counts             |
 |         | who       | Print who is currently logged in                 |
 | &check; | whoami    | Print effective user ID                          |
 | &check; | yes       | Print a string until interrupted                 |
-

@@ -7,7 +7,7 @@ const (
 vargs := if os.args.len > 1 { os.args[1..] } else { []string{} }
 
 curdir := getwd()
-chdir('src')
+chdir('src') ?
 
 dirs := ls('.') ?.filter(is_dir(it))
 
@@ -25,13 +25,13 @@ for dir in dirs {
 
 	// TODO: don't build something if it is already built
 
-	mut final_args := ''
+	mut final_args := '-Wimpure-v'
 	for arg in vargs {
-		final_args += arg + ' '
+		final_args += ' ' + arg
 	}
 	println('compiling ${dir}...')
-	cmd := 'v $final_args-o $curdir/bin/$dir $dir'
+	cmd := 'v $final_args -o $curdir/bin/$dir ./$dir'
 	execute_or_panic(cmd)
 }
 
-chdir(curdir)
+chdir(curdir) ?
